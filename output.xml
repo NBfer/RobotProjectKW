@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.1 on win32)" generated="20230424 18:50:20.813" rpa="false" schemaversion="3">
+<suite id="s1" name="Demo" source="c:\Users\LENOVO\Desktop\RobotProject\testCases\demo.robot">
+<test id="s1-t1" name="tc03" line="28">
+<kw name="lire donnees cellule" library="resource01">
+<var>${url}</var>
+<arg>opencart</arg>
+<arg>2</arg>
+<arg>1</arg>
+<kw name="Recuperer Donnees Cellules" library="readdata">
+<var>${cell_data}</var>
+<arg>${sheetname}</arg>
+<arg>${row}</arg>
+<arg>${cell}</arg>
+<msg timestamp="20230424 18:50:21.277" level="INFO">${cell_data} = https://demo.opencart.com/admin/index.php?route=common/login</msg>
+<status status="PASS" starttime="20230424 18:50:21.277" endtime="20230424 18:50:21.279"/>
+</kw>
+<msg timestamp="20230424 18:50:21.280" level="INFO">${url} = https://demo.opencart.com/admin/index.php?route=common/login</msg>
+<status status="PASS" starttime="20230424 18:50:21.276" endtime="20230424 18:50:21.281"/>
+</kw>
+<kw name="lire nombre ligne" library="resource01">
+<var>${lignes}</var>
+<arg>opencart</arg>
+<kw name="Recuperer Max Ligne" library="readdata">
+<var>${max_row}</var>
+<arg>${sheetname}</arg>
+<msg timestamp="20230424 18:50:21.282" level="INFO">${max_row} = 5</msg>
+<status status="PASS" starttime="20230424 18:50:21.282" endtime="20230424 18:50:21.282"/>
+</kw>
+<msg timestamp="20230424 18:50:21.283" level="INFO">${lignes} = 5</msg>
+<status status="PASS" starttime="20230424 18:50:21.282" endtime="20230424 18:50:21.283"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${i}</var>
+<value>3</value>
+<value>${lignes}+1</value>
+<iter>
+<var name="${i}">3</var>
+<kw name="lire donnees cellule" library="resource01">
+<var>${username}</var>
+<arg>opencart</arg>
+<arg>${i}</arg>
+<arg>2</arg>
+<kw name="Recuperer Donnees Cellules" library="readdata">
+<var>${cell_data}</var>
+<arg>${sheetname}</arg>
+<arg>${row}</arg>
+<arg>${cell}</arg>
+<msg timestamp="20230424 18:50:21.286" level="INFO">${cell_data} = test1</msg>
+<status status="PASS" starttime="20230424 18:50:21.286" endtime="20230424 18:50:21.286"/>
+</kw>
+<msg timestamp="20230424 18:50:21.288" level="INFO">${username} = test1</msg>
+<status status="PASS" starttime="20230424 18:50:21.285" endtime="20230424 18:50:21.288"/>
+</kw>
+<kw name="lire donnees cellule" library="resource01">
+<var>${password}</var>
+<arg>opencart</arg>
+<arg>${i}</arg>
+<arg>3</arg>
+<kw name="Recuperer Donnees Cellules" library="readdata">
+<var>${cell_data}</var>
+<arg>${sheetname}</arg>
+<arg>${row}</arg>
+<arg>${cell}</arg>
+<msg timestamp="20230424 18:50:21.289" level="INFO">${cell_data} = test1</msg>
+<status status="PASS" starttime="20230424 18:50:21.289" endtime="20230424 18:50:21.289"/>
+</kw>
+<msg timestamp="20230424 18:50:21.289" level="INFO">${password} = test1</msg>
+<status status="PASS" starttime="20230424 18:50:21.288" endtime="20230424 18:50:21.289"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>gc</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230424 18:50:21.290" level="INFO">Opening browser 'gc' to base url 'https://demo.opencart.com/admin/index.php?route=common/login'.</msg>
+<status status="PASS" starttime="20230424 18:50:21.289" endtime="20230424 18:50:25.137"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230424 18:50:25.137" endtime="20230424 18:50:25.261"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:input-username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230424 18:50:25.262" level="INFO">Typing text 'test1' into text field 'id:input-username'.</msg>
+<status status="PASS" starttime="20230424 18:50:25.261" endtime="20230424 18:50:25.513"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>id:input-password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230424 18:50:25.515" level="INFO">Typing password into text field 'id:input-password'.</msg>
+<msg timestamp="20230424 18:50:25.555" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230424 18:50:25.595" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230424 18:50:25.513" endtime="20230424 18:50:25.596"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230424 18:50:27.596" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230424 18:50:25.596" endtime="20230424 18:50:27.596"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>xpath://button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230424 18:50:27.598" level="INFO">Clicking button 'xpath://button'.</msg>
+<status status="PASS" starttime="20230424 18:50:27.597" endtime="20230424 18:50:27.673"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>id:alert</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20230424 18:50:27.759" level="INFO">Element 'id:alert' is displayed.</msg>
+<status status="PASS" starttime="20230424 18:50:27.673" endtime="20230424 18:50:27.760"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230424 18:50:32.760" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230424 18:50:27.760" endtime="20230424 18:50:32.760"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230424 18:50:32.760" endtime="20230424 18:50:34.934"/>
+</kw>
+<status status="PASS" starttime="20230424 18:50:21.284" endtime="20230424 18:50:34.935"/>
+</iter>
+<iter>
+<var name="${i}">4</var>
+<kw name="lire donnees cellule" library="resource01">
+<var>${username}</var>
+<arg>opencart</arg>
+<arg>${i}</arg>
+<arg>2</arg>
+<kw name="Recuperer Donnees Cellules" library="readdata">
+<var>${cell_data}</var>
+<arg>${sheetname}</arg>
+<arg>${row}</arg>
+<arg>${cell}</arg>
+<msg timestamp="20230424 18:50:34.937" level="INFO">${cell_data} = test2</msg>
+<status status="PASS" starttime="20230424 18:50:34.936" endtime="20230424 18:50:34.937"/>
+</kw>
+<msg timestamp="20230424 18:50:34.938" level="INFO">${username} = test2</msg>
+<status status="PASS" starttime="20230424 18:50:34.936" endtime="20230424 18:50:34.938"/>
+</kw>
+<kw name="lire donnees cellule" library="resource01">
+<var>${password}</var>
+<arg>opencart</arg>
+<arg>${i}</arg>
+<arg>3</arg>
+<kw name="Recuperer Donnees Cellules" library="readdata">
+<var>${cell_data}</var>
+<arg>${sheetname}</arg>
+<arg>${row}</arg>
+<arg>${cell}</arg>
+<msg timestamp="20230424 18:50:34.940" level="INFO">${cell_data} = test2</msg>
+<status status="PASS" starttime="20230424 18:50:34.939" endtime="20230424 18:50:34.940"/>
+</kw>
+<msg timestamp="20230424 18:50:34.941" level="INFO">${password} = test2</msg>
+<status status="PASS" starttime="20230424 18:50:34.938" endtime="20230424 18:50:34.942"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>gc</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230424 18:50:34.943" level="INFO">Opening browser 'gc' to base url 'https://demo.opencart.com/admin/index.php?route=common/login'.</msg>
+<status status="PASS" starttime="20230424 18:50:34.942" endtime="20230424 18:50:37.764"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230424 18:50:37.764" endtime="20230424 18:50:37.897"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:input-username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230424 18:50:37.898" level="INFO">Typing text 'test2' into text field 'id:input-username'.</msg>
+<status status="PASS" starttime="20230424 18:50:37.897" endtime="20230424 18:50:38.020"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>id:input-password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230424 18:50:38.022" level="INFO">Typing password into text field 'id:input-password'.</msg>
+<msg timestamp="20230424 18:50:38.073" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230424 18:50:38.129" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230424 18:50:38.020" endtime="20230424 18:50:38.130"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230424 18:50:40.131" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230424 18:50:38.130" endtime="20230424 18:50:40.131"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>xpath://button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230424 18:50:40.133" level="INFO">Clicking button 'xpath://button'.</msg>
+<status status="PASS" starttime="20230424 18:50:40.132" endtime="20230424 18:50:40.212"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>id:alert</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20230424 18:50:40.279" level="INFO">Element 'id:alert' is displayed.</msg>
+<status status="PASS" starttime="20230424 18:50:40.212" endtime="20230424 18:50:40.279"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230424 18:50:45.281" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230424 18:50:40.280" endtime="20230424 18:50:45.282"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230424 18:50:45.282" endtime="20230424 18:50:47.466"/>
+</kw>
+<status status="PASS" starttime="20230424 18:50:34.935" endtime="20230424 18:50:47.467"/>
+</iter>
+<iter>
+<var name="${i}">5</var>
+<kw name="lire donnees cellule" library="resource01">
+<var>${username}</var>
+<arg>opencart</arg>
+<arg>${i}</arg>
+<arg>2</arg>
+<kw name="Recuperer Donnees Cellules" library="readdata">
+<var>${cell_data}</var>
+<arg>${sheetname}</arg>
+<arg>${row}</arg>
+<arg>${cell}</arg>
+<msg timestamp="20230424 18:50:47.468" level="INFO">${cell_data} = test3</msg>
+<status status="PASS" starttime="20230424 18:50:47.468" endtime="20230424 18:50:47.469"/>
+</kw>
+<msg timestamp="20230424 18:50:47.469" level="INFO">${username} = test3</msg>
+<status status="PASS" starttime="20230424 18:50:47.467" endtime="20230424 18:50:47.469"/>
+</kw>
+<kw name="lire donnees cellule" library="resource01">
+<var>${password}</var>
+<arg>opencart</arg>
+<arg>${i}</arg>
+<arg>3</arg>
+<kw name="Recuperer Donnees Cellules" library="readdata">
+<var>${cell_data}</var>
+<arg>${sheetname}</arg>
+<arg>${row}</arg>
+<arg>${cell}</arg>
+<msg timestamp="20230424 18:50:47.471" level="INFO">${cell_data} = test3</msg>
+<status status="PASS" starttime="20230424 18:50:47.470" endtime="20230424 18:50:47.471"/>
+</kw>
+<msg timestamp="20230424 18:50:47.471" level="INFO">${password} = test3</msg>
+<status status="PASS" starttime="20230424 18:50:47.469" endtime="20230424 18:50:47.471"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>gc</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230424 18:50:47.472" level="INFO">Opening browser 'gc' to base url 'https://demo.opencart.com/admin/index.php?route=common/login'.</msg>
+<status status="PASS" starttime="20230424 18:50:47.472" endtime="20230424 18:50:50.531"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230424 18:50:50.532" endtime="20230424 18:50:50.657"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:input-username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230424 18:50:50.659" level="INFO">Typing text 'test3' into text field 'id:input-username'.</msg>
+<status status="PASS" starttime="20230424 18:50:50.658" endtime="20230424 18:50:50.941"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>id:input-password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230424 18:50:50.942" level="INFO">Typing password into text field 'id:input-password'.</msg>
+<msg timestamp="20230424 18:50:50.994" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230424 18:50:51.051" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230424 18:50:50.942" endtime="20230424 18:50:51.052"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230424 18:50:53.052" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230424 18:50:51.052" endtime="20230424 18:50:53.052"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>xpath://button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230424 18:50:53.053" level="INFO">Clicking button 'xpath://button'.</msg>
+<status status="PASS" starttime="20230424 18:50:53.052" endtime="20230424 18:50:53.141"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>id:alert</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20230424 18:50:53.174" level="INFO">Element 'id:alert' is displayed.</msg>
+<status status="PASS" starttime="20230424 18:50:53.142" endtime="20230424 18:50:53.175"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230424 18:50:58.176" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230424 18:50:53.175" endtime="20230424 18:50:58.176"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230424 18:50:58.176" endtime="20230424 18:51:00.384"/>
+</kw>
+<status status="PASS" starttime="20230424 18:50:47.467" endtime="20230424 18:51:00.384"/>
+</iter>
+<status status="PASS" starttime="20230424 18:50:21.284" endtime="20230424 18:51:00.385"/>
+</for>
+<status status="PASS" starttime="20230424 18:50:21.275" endtime="20230424 18:51:00.386"/>
+</test>
+<status status="PASS" starttime="20230424 18:50:20.817" endtime="20230424 18:51:00.389"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Demo">Demo</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
